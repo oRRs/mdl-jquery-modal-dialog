@@ -2,8 +2,32 @@
 Basic modal dialogs using MDL and jQuery
 
 ## Dependencies
-- jQuery (tested with v2.1.4)
-- Material Design Lite (tested with v1.0.5)
+- [jQuery](https://jquery.com) (tested with v2.1.4)
+- [Material Design Lite](http://www.getmdl.io) (tested with v1.0.5)
+
+## Usage / Configuration
+
+```javascript
+showDialog({
+    id: 'dialog-id',
+    title: 'Title',
+    text: 'Text',
+    negative: {
+        id: 'cancel-button',
+        title: 'Cancel',
+        onClick: function() { ... }
+    },
+    positive: {
+        id: 'ok-button',
+        title: 'OK',
+        onClick: function() { ... }
+    },
+    cancelable: true,
+    contentStyle: {'max-width': '500px'},
+    onLoaded: function() { ... }
+});
+```
+Most parameters are optional.
 
 ## Demo
 - [demo.html in the project](https://github.com/oRRs/mdl-jquery-modal-dialog/blob/master/demo.html)
