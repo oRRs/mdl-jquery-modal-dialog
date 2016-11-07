@@ -48,15 +48,15 @@ function showDialog(options) {
             options.negative = $.extend({
                 id: 'negative',
                 title: 'Cancel',
-                onClick: function () {
-                    return false;
-                }
+                onClick: null
             }, options.negative);
             var negButton = $('<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="' + options.negative.id + '">' + options.negative.title + '</button>');
             negButton.click(function (e) {
                 e.preventDefault();
-                if (!options.negative.onClick(e))
-                    hideDialog(dialog)
+                if (!options.negative.onClick)
+                    hideDialog(dialog);
+                else
+                    options.negative.onClick(e);
             });
             negButton.appendTo(buttonBar);
         }
@@ -64,15 +64,15 @@ function showDialog(options) {
             options.positive = $.extend({
                 id: 'positive',
                 title: 'OK',
-                onClick: function () {
-                    return false;
-                }
+                onClick: null
             }, options.positive);
             var posButton = $('<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="' + options.positive.id + '">' + options.positive.title + '</button>');
             posButton.click(function (e) {
                 e.preventDefault();
-                if (!options.positive.onClick(e))
-                    hideDialog(dialog)
+                if (!options.positive.onClick)
+                    hideDialog(dialog);
+                else
+                    options.positive.onClick(e);
             });
             posButton.appendTo(buttonBar);
         }
