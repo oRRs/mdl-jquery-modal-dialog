@@ -35,7 +35,7 @@ function showDialog(options) {
         $(document).unbind("keyup.dialog");
     }
 
-    $('<div id="' + options.id + '" class="dialog-container"><div class="mdl-card mdl-shadow--16dp"></div></div>').appendTo("body");
+    $('<div id="' + options.id + '" class="dialog-container"><div class="mdl-card mdl-shadow--16dp" id="' + options.id + '_content"></div></div>').appendTo("body");
     var dialog = $('#' + options.id);
     var content = dialog.find('.mdl-card');
     if (options.contentStyle != null) content.css(options.contentStyle);
