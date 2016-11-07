@@ -25,12 +25,15 @@ function showDialog(options) {
         positive: false,
         cancelable: true,
         contentStyle: null,
-        onLoaded: false
+        onLoaded: false,
+        hideOther: true
     }, options);
 
-    // remove existing dialogs
-    $('.dialog-container').remove();
-    $(document).unbind("keyup.dialog");
+    if (options.hideOther) {
+        // remove existing dialogs
+        $('.dialog-container').remove();
+        $(document).unbind("keyup.dialog");
+    }
 
     $('<div id="' + options.id + '" class="dialog-container"><div class="mdl-card mdl-shadow--16dp"></div></div>').appendTo("body");
     var dialog = $('#' + options.id);
