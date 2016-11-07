@@ -21,6 +21,7 @@ function showDialog(options) {
         id: 'orrsDiag',
         title: null,
         text: null,
+        neutral: false,
         negative: false,
         positive: false,
         cancelable: true,
@@ -45,8 +46,22 @@ function showDialog(options) {
     if (options.text != null) {
         $('<p>' + options.text + '</p>').appendTo(content);
     }
-    if (options.negative || options.positive) {
+    if (options.neutral || options.negative || options.positive) {
         var buttonBar = $('<div class="mdl-card__actions dialog-button-bar"></div>');
+        if (options.neutral) {
+            options.neutral = $.extend({
+                id: 'neutral',
+                title: 'Neutral',
+                onClick: null
+            }, options.neutral);
+            var neuButton = $('<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="' + options.neutral.id + '">' + options.neutral.title + '</button>');
+            neuButton.click(function (e) {
+                e.preventDefault();
+                if (options.neutral.onClick == null || !options.neutral.onClick(e))
+                    hideDialog(dialog)
+            });
+            neuButton.appendTo(buttonBar);
+        }
         if (options.negative) {
             options.negative = $.extend({
                 id: 'negative',
