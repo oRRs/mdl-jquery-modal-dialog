@@ -2,8 +2,8 @@
 Basic modal dialogs using MDL and jQuery
 
 ## Dependencies
-- [jQuery](https://jquery.com) (tested with v2.1.4)
-- [Material Design Lite](http://www.getmdl.io) (tested with v1.0.5)
+- [jQuery](https://jquery.com) (tested with v3.1.1)
+- [Material Design Lite](http://www.getmdl.io) (tested with v1.2.1)
 
 ## Usage / Configuration
 
@@ -34,4 +34,4 @@ Most parameters are optional.
 - [JSFiddle (missing the Roboto font)](https://jsfiddle.net/w5cpw7yf/)
 
 ## License
-© Oliver Rennies, 2015. Licensed under an [MIT](https://github.com/oRRs/mdl-jquery-modal-dialog/blob/master/LICENSE) license.
+Â© Oliver Rennies, 2015. Licensed under an [MIT](https://github.com/oRRs/mdl-jquery-modal-dialog/blob/master/LICENSE) license.
