@@ -58,7 +58,7 @@ function showDialog(options) {
             neuButton.click(function (e) {
                 e.preventDefault();
                 if (options.neutral.onClick == null || !options.neutral.onClick(e))
-                    hideDialog(dialog)
+                    hideDialog(dialog, function(){})
             });
             neuButton.appendTo(buttonBar);
         }
@@ -72,7 +72,7 @@ function showDialog(options) {
             negButton.click(function (e) {
                 e.preventDefault();
                 if (options.negative.onClick == null || !options.negative.onClick(e))
-                    hideDialog(dialog)
+                    hideDialog(dialog, function(){})
             });
             negButton.appendTo(buttonBar);
         }
@@ -86,7 +86,7 @@ function showDialog(options) {
             posButton.click(function (e) {
                 e.preventDefault();
                 if (options.positive.onClick == null || !options.positive.onClick(e))
-                    hideDialog(dialog)
+                    hideDialog(dialog, function(){})
             });
             posButton.appendTo(buttonBar);
         }
@@ -95,11 +95,11 @@ function showDialog(options) {
     componentHandler.upgradeDom();
     if (options.cancelable) {
         dialog.click(function () {
-            hideDialog(dialog);
+            hideDialog(dialog, function(){});
         });
         $(document).bind("keyup.dialog", function (e) {
             if (e.which == 27)
-                hideDialog(dialog);
+                hideDialog(dialog, function(){});
         });
         content.click(function (e) {
             e.stopPropagation();
@@ -112,10 +112,11 @@ function showDialog(options) {
     }, 1);
 }
 
-function hideDialog(dialog) {
+function hideDialog(dialog, callback) {
     $(document).unbind("keyup.dialog");
     dialog.css({opacity: 0});
     setTimeout(function () {
         dialog.remove();
+        callback();
     }, 400);
 }
