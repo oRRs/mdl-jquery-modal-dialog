@@ -24,7 +24,8 @@ showDialog({
     },
     cancelable: true,
     contentStyle: {'max-width': '500px'},
-    onLoaded: function() { ... }
+    onLoaded: function() { ... },
+    onHidden: function() { ... }
 });
 ```
 Most parameters are optional.
