@@ -1,7 +1,7 @@
 function showLoading() {
   document.querySelector('.loading-container').remove();
   var container = document.createElement('div');
-  container.setAttribute('id'.'orrsLoader');
+  container.setAttribute('id','orrsLoader');
   container.innerHTML = `<div><div class="mdl-spinner mdl-js-spinner is-active"></div></div>`);
   componentHandler.upgrade(container);
   document.querySelector('body').appendChild(container);
