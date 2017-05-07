@@ -58,13 +58,13 @@ function showDialog(options) {
     let buttonBar = document.createElement('div');
     buttonBar.classList.add('mdl-card__actions','dialog-button-bar');
     if (neutral) {
-      let { id = 'neutral', title: 'Neutral', onClick = null} = neutral;
+      let { id = 'neutral', title= 'Neutral', onClick = null} = neutral;
       let neuButton = document.createElement('button');
       neuButton.classList.add('mdl-button', 'mdl-js-button', 'mdl-js-ripple-effect');
       neuButton.setAttribute('id', id);
       neuButton.onclick = e => {
         e.preventDefault();
-        if (onClick == null || !onClick(e)) {
+        if (onClick === null || !onClick(e)) {
           hideDialog(dialog, onHidden);
         }
       }
@@ -77,7 +77,7 @@ function showDialog(options) {
       negButton.setAttribute('id', id);
       negButton.onclick = e => {
         e.preventDefault();
-        if (onClick == null || !onClick(e)) {
+        if (onClick === null || !onClick(e)) {
           hideDialog(dialog, onHidden);
         }
       }
@@ -90,7 +90,7 @@ function showDialog(options) {
       posButton.setAttribute('id', id);
       posButton.onclick = e => {
         e.preventDefault();
-        if (onClick == null || !onClick(e)) {
+        if (onClick === null || !onClick(e)) {
           hideDialog(dialog, onHidden);
         }
       }
