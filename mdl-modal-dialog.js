@@ -31,8 +31,11 @@ function showDialog(options) {
      
   
   if (hideOther) {
-    document.querySelector('.dialog-container').remove();
-    document.removeEventListener('keyup',this.keyUp);
+    let container = document.querySelector('.dialog-container');
+    if (container) {
+      container.remove();
+      document.removeEventListener('keyup',this.keyUp);
+    }
   }
   var dialog = document.createElement('div');
   dialog.classList.add('dialog-container');
@@ -62,6 +65,7 @@ function showDialog(options) {
       let neuButton = document.createElement('button');
       neuButton.classList.add('mdl-button', 'mdl-js-button', 'mdl-js-ripple-effect');
       neuButton.setAttribute('id', id);
+      neuButton.textContent = title;
       neuButton.onclick = e => {
         e.preventDefault();
         if (onClick === null || !onClick(e)) {
@@ -75,6 +79,7 @@ function showDialog(options) {
       let negButton = document.createElement('button');
       negButton.classList.add('mdl-button', 'mdl-js-button', 'mdl-js-ripple-effect');
       negButton.setAttribute('id', id);
+      negButton.textContent = title;
       negButton.onclick = e => {
         e.preventDefault();
         if (onClick === null || !onClick(e)) {
@@ -88,6 +93,7 @@ function showDialog(options) {
       let posButton = document.createElement('button');
       posButton.classList.add('mdl-button', 'mdl-js-button', 'mdl-js-ripple-effect');
       posButton.setAttribute('id', id);
+      posButton.textContent = title;
       posButton.onclick = e => {
         e.preventDefault();
         if (onClick === null || !onClick(e)) {
@@ -114,5 +120,5 @@ showDialog.keyUp = e => {
 
 function hideDialog(dialog, callback) {
   dialog.style.opacity = 0;
-  setTimeout(_ => {dialog.remove(); if (callback) { callback }}, 400);
+  setTimeout(_ => {dialog.remove(); if (callback) { callback(); }}, 400);
 }
